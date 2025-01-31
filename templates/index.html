@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Network Intrusion Detection System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .input-column { width: 30%; }
+        .result { margin-top: 20px; padding: 10px; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .success { background-color: #d4edda; color: #155724; }
+        .warning { background-color: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Network Intrusion Detection System</h1>
+    <p>Enter feature values below and click **Detect Intrusion**.</p>
+
+    <form method="POST">
+        <div class="container">
+            {% for feature, label in pca_feature_mapping.items() %}
+                <div class="input-column">
+                    <label for="{{ feature }}">{{ label }}</label>
+                    <input type="text" id="{{ feature }}" name="{{ feature }}" value="0">
+                </div>
+            {% endfor %}
+        </div>
+        
+        <button type="submit">🚨 Detect Intrusion</button>
+    </form>
+
+    {% if result %}
+        <div class="result {{ result_class }}">
+            <p>{{ result }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
