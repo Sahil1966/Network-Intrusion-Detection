@@ -23,7 +23,9 @@ pca_feature_mapping = {
 important_features = list(pca_feature_mapping.keys())
 
 # Initialize Flask app
-app = Flask(__name__)
+application = Flask(__name__)
+
+app=application
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -56,4 +58,4 @@ def index():
     return render_template('index.html', pca_feature_mapping=pca_feature_mapping)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0")
